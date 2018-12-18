@@ -1,5 +1,4 @@
-import React, { Component }  from 'react';
-import ReactDOM from 'react-dom';
+import React  from 'react';
 import '../css/style.css';
 //import productsBoard from '../product-board-game.js';
 import Product from './shop-product.js';

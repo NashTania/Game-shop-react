@@ -1,10 +1,7 @@
-import React, { Component }  from 'react';
-import ReactDOM from 'react-dom';
+import React  from 'react';
 import '../css/style.css';
 import BoardFilter from './board-filter.js';
 import BoardList from './board-productList.js';
-import sendRequest from '../send-request.js';
-import { store } from '../redux-ex.js';
 
 class BoardGames extends React.Component {
 

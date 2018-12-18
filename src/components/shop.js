@@ -1,9 +1,7 @@
-import React, {Component} from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react';
 import '../css/style.css';
 import FilterPs from './shop-filter-ps.js';
 import ProductsListPs from './shop-productsList-ps.js';
-import sendRequest from '../send-request.js';
 
 class ShopPage extends React.Component {
 
@@ -41,7 +39,7 @@ class ShopPage extends React.Component {
     }
     if(event.currentTarget.checked === false) {
       const filterId = this.state.filterId.filter(item =>
-        item != event.currentTarget.id
+        item !== event.currentTarget.id
       )
       this.state.filterId = filterId;
       console.log()

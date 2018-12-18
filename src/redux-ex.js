@@ -1,8 +1,4 @@
-import {connect} from 'react-redux';
-import React from 'react';
 import {createStore, applyMiddleware} from 'redux';
-import {Provider} from 'react-redux';
-import App from './components/app.js';
 import thunk from 'redux-thunk';
 import addFetch from './fetch-function.js'
 
@@ -18,21 +14,45 @@ export function productsApp(state = initalState, action) {
       }
 
     case ADD_PRODUCT_TO_CART:
-      return {
-        productsCart: [
-          ...state.productsCart,
-          action.product
-        ]
+      if (state.productsCart.indexOf(action.product) === -1) {
+        action.product.quantity = (action.product.quantity || 0) + 1
+        return {
+          productsCart: [
+            ...state.productsCart,
+            action.product
+          ]
+        }
+      } else {
+          action.product.quantity = action.product.quantity + 1
+          return {
+            productsCart: state.productsCart
+          }
       }
 
     case DELETE_PRODUCT:
       return {
         productsCart:
           state.productsCart.filter((item) => {
-            console.log(item)
             return item !== action.product
           })
       }
+
+    case INCREASE_QUANTITY:
+      action.product.quantity = action.product.quantity + 1
+        return {
+          productsCart: [
+            ...state.productsCart
+          ]
+        }
+
+    case DECREASE_QUANTITY:
+      action.product.quantity = action.product.quantity - 1
+        return {
+          productsCart: [
+            ...state.productsCart
+          ]
+        }
+
 
     default:
       return state
@@ -58,7 +78,6 @@ export function deleteItem(product) {
 
 export function getProducts() {
   let cart = store.getState();
-  console.log(cart)
 
   if (cart.productsCart === null) {
     return (dispatch) => {
@@ -77,7 +96,23 @@ export function getProducts() {
   }
 }
 
+export function increaseQuantity(product) {
+  return {
+    type: INCREASE_QUANTITY,
+    product: product
+  }
+}
+
+export function decreaseQuantity(product) {
+  return {
+    type: DECREASE_QUANTITY,
+    product: product
+  }
+}
+
+
 const ADD_PRODUCT_TO_CART = 'ADD_PRODUCT_TO_CART';
 const GET_PRODUCTS = 'GET_PRODUCTS';
-//const RETURN_PRODUCTS = 'RETURN_PRODUCTS';
-const DELETE_PRODUCT = 'DELETE_PRODUCT'
+const DELETE_PRODUCT = 'DELETE_PRODUCT';
+const INCREASE_QUANTITY = 'INCREASE_QUANTITY';
+const DECREASE_QUANTITY = 'DECREASE_QUANTITY';

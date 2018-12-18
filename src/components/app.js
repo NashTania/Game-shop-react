@@ -1,5 +1,4 @@
-import React, { Component }  from 'react';
-import ReactDOM from 'react-dom';
+import React  from 'react';
 import { Link } from "react-router-dom";
 import MobileMenu from './mobile-menu.js';
 import '../css/style.css';

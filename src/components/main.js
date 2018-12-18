@@ -1,6 +1,5 @@
-import React, { Component }  from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import React  from 'react';
+//import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import '../css/style.css'
 
 class MainPage extends React.Component {
@@ -13,7 +12,7 @@ class MainPage extends React.Component {
       <div id='slider'>
         <figure className='slider'>
           <figure>
-            <img src={slider1} />
+            <img alt='slider' src={slider1} />
             <figcaption>
               <p className='figcaption-header'>
                 The Witcher 3: Wild Hunt
@@ -25,7 +24,7 @@ class MainPage extends React.Component {
             </figcaption>
           </figure>
           <figure>
-            <img src={slider2} />
+            <img alt='slider'src={slider2} />
             <figcaption>
               <p className='figcaption-header'>
                 The Last of Us Remastered
@@ -36,7 +35,7 @@ class MainPage extends React.Component {
             </figcaption>
           </figure>
           <figure>
-            <img src={slider3} />
+            <img alt='slider'src={slider3} />
             <figcaption>
               <p className='figcaption-header'>
                 God of War (2018)
@@ -47,7 +46,7 @@ class MainPage extends React.Component {
             </figcaption>
           </figure>
             <figure>
-              <img src={slider1} />
+              <img alt='slider' src={slider1} />
               <figcaption>
                 <p className='figcaption-header'>
                   The Witcher 3: Wild Hunt

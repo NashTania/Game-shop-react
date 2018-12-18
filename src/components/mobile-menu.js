@@ -1,14 +1,24 @@
-import React, {Component} from 'react';
-import ReactDOM from 'react-dom';
-import {BrowserRouter as Route, Link} from "react-router-dom";
+import React from 'react';
+import { Link} from "react-router-dom";
 //import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import '../css/style.css';
 
+
 class MobileMenu extends React.Component {
+  constructor(props) {
+    super(props)
+    this.handleClick = this.handleClick.bind(this)
+    this.state = { visible: false }
+  }
+
+  handleClick() {
+    this.setState(prev => ({ visible: !prev.visible }))
+  }
+
   render() {
     return (
       <div className='mobile-menu'>
-        <input rel='hamburger' className='hamburger' type='checkbox'/>
+        <input id='hamburger' className='hamburger' type='checkbox' onClick={this.handleClick}/>
         <label htmlFor='hamburger' className='hamburger'>
           <i></i>
         </label>

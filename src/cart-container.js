@@ -5,10 +5,12 @@ import { deleteItem } from './redux-ex.js';
 import { store } from './redux-ex.js';
 import sendRequest from './send-request.js';
 import getUserId from './make-id.js';
+import { increaseQuantity, decreaseQuantity, deleteItemQuantity } from './redux-ex.js';
 
   const mapStateToProps = (store) => {
     return {
-      cartGame: store.productsCart
+      cartGame: store.productsCart,
+      productQuantity: store.quantityById
     }
   }
 
@@ -22,6 +24,19 @@ import getUserId from './make-id.js';
         dispatch(deleteItem(product));
         let cart = store.getState();
         sendRequest(sendRequest('tatiana_tkachenko_FD2_game_shop_cart_' + userId, cart.productsCart))
+      },
+      increaseQuantity: (product) => {
+        dispatch(increaseQuantity(product));
+        let cart = store.getState();
+        console.log(cart.productsCart)
+      },
+      decreaseQuantity: (product) => {
+        dispatch(decreaseQuantity(product))
+        let cart = store.getState();
+        console.log(cart.productsCart)
+        if(product.quantity === 0) {
+          dispatch(deleteItem(product))
+        }
       }
     }
   }

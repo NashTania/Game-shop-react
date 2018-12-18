@@ -1,13 +1,6 @@
-import React, { Component }  from 'react';
-import ReactDOM from 'react-dom';
+import React  from 'react';
 import '../css/style.css';
 
-/*function _CheckBox(props) {
-  return (
-    <input type="checkbox" id="racing"  onChange={props.filterItems}/>
-    <label htmlFor='racing'><span>Racing</span></label><br />
-  )
-}*/
 
 function FilterPs (props) {
   return (

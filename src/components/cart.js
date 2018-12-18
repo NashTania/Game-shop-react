@@ -1,27 +1,31 @@
-import React, { Component }  from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react';
+import ReactDOM from 'react-dom'
 import '../css/style.css';
 import CartList from './cart-list.js';
-import getUserId from '../make-id.js'
-import sendRequest from '../send-request.js';
 import { store } from '../redux-ex.js';
 
+const modalRoot = document.getElementById('modal-root');
 
 class CartPage extends React.Component {
 
   constructor(props){
     super(props);
 
+    this.handleShow = this.handleShow.bind(this);
+    this.handleHide = this.handleHide.bind(this);
+
     this.state ={
       isLoaded: false,
       items: [],
-      total: 0
+      total: 0,
+      showModal: false
     }
   }
 
   componentDidMount() {
+    console.log(this.props.cartGame)
     if ( this.props.cartGame === null ) {
-    this.props.getProducts().then((data) => {
+      this.props.getProducts().then((data) => {
         this.setState({
           isLoaded: true,
           items: this.props.cartGame,
@@ -47,16 +51,34 @@ class CartPage extends React.Component {
     }
   }
 
+  handleShow() {
+    this.setState({showModal: true});
+  }
+
+  handleHide() {
+    this.setState({showModal: false});
+  }
+
   getTotal (items) {
-    //const {items} = this.state;
     let total = items.reduce((sum, current) => {
-      return sum + current.price
+      return sum + (current.price * current.quantity)
     }, 0)
     return total
   }
 
   render () {
     const { isLoaded, items, filtredItems } = this.state;
+    const modal = this.state.showModal ? (
+      <Modal>
+        <div className="modal">
+          <div class='modal-text'>
+            Товар удален
+          </div>
+          This is being rendered inside the #modal-container div.
+          <button onClick={this.handleHide}>Hide modal</button>
+        </div>
+      </Modal>
+    ) : null;
     if(isLoaded) {
       return(
         <div>
@@ -64,8 +86,13 @@ class CartPage extends React.Component {
             <p className='page-name'>
               Корзина
             </p>
+            <button onClick={this.handleShow}> window</button>
+            {modal}
           </div>
-          <CartList cartProducts = {items} deleteItem={this.props.deleteItem}/>
+          <div id="modal-root"></div>
+          <CartList cartProducts = {items} deleteItem={this.props.deleteItem}
+            increaseQuantity={this.props.increaseQuantity} decreaseQuantity={this.props.decreaseQuantity}
+            />
           <p className='total'>
             Итого: {this.state.total} руб.
           </p>
@@ -79,25 +106,31 @@ class CartPage extends React.Component {
 }
 
 export default CartPage;
-/*deleteItem = (cartProduct) => {
-  const userId = getUserId();
-  const {items} = this.state;
-  let result = items.filter((product) => {
-    return cartProduct.id != product.id
-  })
-  sendRequest('tatiana_tkachenko_FD2_game_shop_cart_' + userId, result);
-  this.setState({
-    items: result,
-    total: this.getTotal(result)
-  })
-}*/
 
-/*let userId = getUserId();
-const body = new URLSearchParams();
-body.set('f','READ');
-body.set('n', 'tatiana_tkachenko_FD2_game_shop_cart_' + userId);
 
-fetch("https://fe.it-academy.by/AjaxStringStorage2.php", {
-  method: "POST",
-  body: body
-})*/
+class Modal extends React.Component {
+  constructor(props) {
+    super(props);
+    this.el = document.createElement('div');
+  }
+
+  componentDidMount() {
+    const modalRoot = document.getElementById('modal-root')
+    console.log(this.el)
+    modalRoot.appendChild(this.el);
+  }
+
+  componentWillUnmount() {
+    const modalRoot = document.getElementById('modal-root')
+    modalRoot.removeChild(this.el);
+  }
+
+  render() {
+    return ReactDOM.createPortal(
+      this.props.children,
+      this.el,
+    );
+  }
+}
+
+//modal={this.handleShow} modalWindow={modal}

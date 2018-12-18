@@ -1,6 +1,4 @@
-import React, { Component }  from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import React  from 'react';
 import NewsBlock from './news-block.js';
 import '../css/style.css';
 
