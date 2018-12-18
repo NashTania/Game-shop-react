@@ -2,7 +2,7 @@ import React  from 'react';
 import { Link } from "react-router-dom";
 import MobileMenu from './mobile-menu.js';
 import '../css/style.css';
-import CartQuantity from '../cart-quantity-container.js'
+import CartQuantity from '../containers/cart-quantity-container.js'
 
 
 class App extends React.Component {

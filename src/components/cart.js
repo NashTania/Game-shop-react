@@ -3,8 +3,7 @@ import ReactDOM from 'react-dom'
 import '../css/style.css';
 import CartList from './cart-list.js';
 import { store } from '../redux-ex.js';
-
-const modalRoot = document.getElementById('modal-root');
+import Modal from './modal.js'
 
 class CartPage extends React.Component {
 
@@ -71,11 +70,11 @@ class CartPage extends React.Component {
     const modal = this.state.showModal ? (
       <Modal>
         <div className="modal">
-          <div class='modal-text'>
+          <div className='modal-text'>
             Товар удален
           </div>
-          This is being rendered inside the #modal-container div.
-          <button onClick={this.handleHide}>Hide modal</button>
+
+          <button className='modal-button' onClick={this.handleHide}>Закрыть</button>
         </div>
       </Modal>
     ) : null;
@@ -86,12 +85,11 @@ class CartPage extends React.Component {
             <p className='page-name'>
               Корзина
             </p>
-            <button onClick={this.handleShow}> window</button>
             {modal}
           </div>
           <div id="modal-root"></div>
           <CartList cartProducts = {items} deleteItem={this.props.deleteItem}
-            increaseQuantity={this.props.increaseQuantity} decreaseQuantity={this.props.decreaseQuantity}
+            increaseQuantity={this.props.increaseQuantity} decreaseQuantity={this.props.decreaseQuantity} modal={this.handleShow}
             />
           <p className='total'>
             Итого: {this.state.total} руб.
@@ -108,29 +106,6 @@ class CartPage extends React.Component {
 export default CartPage;
 
 
-class Modal extends React.Component {
-  constructor(props) {
-    super(props);
-    this.el = document.createElement('div');
-  }
 
-  componentDidMount() {
-    const modalRoot = document.getElementById('modal-root')
-    console.log(this.el)
-    modalRoot.appendChild(this.el);
-  }
 
-  componentWillUnmount() {
-    const modalRoot = document.getElementById('modal-root')
-    modalRoot.removeChild(this.el);
-  }
-
-  render() {
-    return ReactDOM.createPortal(
-      this.props.children,
-      this.el,
-    );
-  }
-}
-
-//modal={this.handleShow} modalWindow={modal}
+//modal={this.handleShow}

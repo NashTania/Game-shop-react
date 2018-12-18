@@ -2,16 +2,20 @@ import React from 'react';
 import '../css/style.css';
 import FilterPs from './shop-filter-ps.js';
 import ProductsListPs from './shop-productsList-ps.js';
+import Modal from './modal.js'
 
 class ShopPage extends React.Component {
 
   constructor(props) {
     super(props);
+    this.handleShow = this.handleShow.bind(this);
+    this.handleHide = this.handleHide.bind(this);
     this.state = {
       isLoaded: false,
       items: [],
       filtredItems: [],
-      filterId: []
+      filterId: [],
+      showModal: false
     }
   }
 
@@ -62,6 +66,14 @@ class ShopPage extends React.Component {
     }
   }
 
+  handleShow() {
+    this.setState({showModal: true});
+  }
+
+  handleHide() {
+    this.setState({showModal: false});
+  }
+
   /*addToCart = (event) => {
     const items = this.state.items;
     addProductToCart(event, items)
@@ -69,6 +81,16 @@ class ShopPage extends React.Component {
 
   render() {
     const { isLoaded, items, filtredItems } = this.state;
+    const modal = this.state.showModal ? (
+      <Modal>
+        <div className="modal">
+          <div className='modal-text'>
+            Товар добавлен
+          </div>
+          <button className='modal-button' onClick={this.handleHide}>Закрыть</button>
+        </div>
+      </Modal>
+    ) : null;
     if (isLoaded) {
       return (
         <div>
@@ -76,10 +98,12 @@ class ShopPage extends React.Component {
           <p className='page-name'>
             Игры для PS
           </p>
+          {modal}
         </div>
+        <div id="modal-root"></div>
         <div className='shop-content'>
           <FilterPs filterItems={this.filterProducts}/>
-          <ProductsListPs products={filtredItems} addToCart={this.props.addToCart}/>
+          <ProductsListPs products={filtredItems} addToCart={this.props.addToCart} modal={this.handleShow}/>
         </div>
       </div>
     )} else {

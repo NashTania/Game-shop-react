@@ -5,7 +5,7 @@ import CartProduct from './cart-product.js';
 function CartList(props) {
   const list = props.cartProducts.map(product =>
     <CartProduct key={product.id} cartProduct={product} deleteItem={props.deleteItem}
-    increaseQuantity={props.increaseQuantity} decreaseQuantity={props.decreaseQuantity}
+    increaseQuantity={props.increaseQuantity} decreaseQuantity={props.decreaseQuantity} modal={props.modal}
     />
   )
   return (

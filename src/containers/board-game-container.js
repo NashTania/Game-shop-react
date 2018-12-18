@@ -1,10 +1,10 @@
-import getUserId from './make-id.js';
-import sendRequest from './send-request.js';
-import { addToCart } from './redux-ex.js'
+import getUserId from '../make-id.js';
+import sendRequest from '../send-request.js';
+import { addToCart } from '../actions/actions.js';
 import { connect } from 'react-redux';
 import React from 'react';
-import BoardGames from './components/board-games-shop.js';
-import { store } from './redux-ex.js';
+import BoardGames from '../components/board-games-shop.js';
+import { store } from '../redux-ex.js';
 
 const boundAddProduct = (dispatch) => {
   const userId = getUserId()

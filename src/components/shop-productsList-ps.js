@@ -4,7 +4,7 @@ import Product from './shop-product.js';
 
 function ProductsListPs(props) {
   const listProducts = props.products.map(product =>
-    <Product key={product.id} product={product} addToCart={props.addToCart}/>
+    <Product key={product.id} product={product} addToCart={props.addToCart} modal={props.modal}/>
   )
 
   return (

@@ -1,11 +1,12 @@
-import { getProducts } from './redux-ex.js';
+//deleteItemimport { getProducts } from '../actions/actions.js';
 import { connect } from 'react-redux';
-import CartPage from './components/cart.js';
-import { deleteItem } from './redux-ex.js';
-import { store } from './redux-ex.js';
-import sendRequest from './send-request.js';
-import getUserId from './make-id.js';
-import { increaseQuantity, decreaseQuantity, deleteItemQuantity } from './redux-ex.js';
+import CartPage from '../components/cart.js';
+//import { deleteItem } from '../actions/actions.js';
+import { store } from '../redux-ex.js';
+import sendRequest from '../send-request.js';
+import getUserId from '../make-id.js';
+import { increaseQuantity, getProducts, deleteItem } from '../actions/actions.js';
+import {  decreaseQuantity } from '../actions/actions.js';
 
   const mapStateToProps = (store) => {
     return {

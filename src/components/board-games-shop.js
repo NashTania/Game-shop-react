@@ -2,15 +2,19 @@ import React  from 'react';
 import '../css/style.css';
 import BoardFilter from './board-filter.js';
 import BoardList from './board-productList.js';
+import Modal from './modal.js'
 
 class BoardGames extends React.Component {
 
   constructor(props) {
     super(props);
+    this.handleShow = this.handleShow.bind(this);
+    this.handleHide = this.handleHide.bind(this);
     this.state = {
       isLoaded: false,
       items: [],
-      filtredItems: []
+      filtredItems: [],
+      showModal: false
     }
   }
 
@@ -51,6 +55,14 @@ class BoardGames extends React.Component {
     }
   }
 
+  handleShow() {
+    this.setState({showModal: true});
+  }
+
+  handleHide() {
+    this.setState({showModal: false});
+  }
+
   /*addToCart = (event) => {
     const items = this.state.items;
     addProductToCart(event, items)
@@ -58,6 +70,16 @@ class BoardGames extends React.Component {
 
   render() {
     const { isLoaded, items, filtredItems } = this.state;
+    const modal = this.state.showModal ? (
+      <Modal>
+        <div className="modal">
+          <div className='modal-text'>
+            Товар добавлен
+          </div>
+          <button className='modal-button' onClick={this.handleHide}>Закрыть</button>
+        </div>
+      </Modal>
+    ) : null;
     if (isLoaded) {
       return (
         <div>
@@ -65,10 +87,12 @@ class BoardGames extends React.Component {
             <p className='page-name'>
               Настольные игры
             </p>
+            {modal}
           </div>
+          <div id="modal-root"></div>
           <div className='shop-content'>
             <BoardFilter filterFunc={this.filterProduct}/>
-            <BoardList products={filtredItems} addToCart={this.props.addToCart}/>
+            <BoardList products={filtredItems} addToCart={this.props.addToCart} modal={this.handleShow}/>
           </div>
         </div>
       )

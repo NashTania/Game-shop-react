@@ -5,6 +5,7 @@ import { store } from '../redux-ex.js';
 class CartProduct extends React.Component {
   constructor(props) {
     super(props)
+
     this.state = {
       productQuantity: props.productQuantity
     }
@@ -18,14 +19,15 @@ class CartProduct extends React.Component {
     }
   }
 
-  /*clickFunction(event) {
+  clickFunction(event) {
     this.props.deleteItem(this.props.cartProduct);
     this.props.modal()
-  }*/
+  }
 
   render() {
     const cart = store.getState();
     const src = require('../images/' + this.props.cartProduct.src);
+
       return(
         <div className='flex-row'>
           <div className='flex-1'>
@@ -49,8 +51,7 @@ class CartProduct extends React.Component {
             </div>
           </div>
           <div className='flex-2'>
-            <button className='cart-delete' onClick={() => this.props.deleteItem(this.props.cartProduct)}>x</button>
-            {this.props.modalWindow}
+            <button className='cart-delete' onClick={() => this.clickFunction()}>x</button>
           </div>
         </div>
       )

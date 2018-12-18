@@ -1,21 +1,31 @@
 import React  from 'react';
 import '../css/style.css';
 
-function Product (props) {
-  let src = require('../images/' + props.product.src);
+class Product extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  clickFunction(event) {
+    this.props.addToCart(this.props.product);
+    this.props.modal()
+  }
+
+  render() {
+  let src = require('../images/' + this.props.product.src);
     return(
       <div className='product-game'>
         <img className='product-img' src={src} alt='product'/>
         <p className='product-header'>
-        {props.product.name}
+        {this.props.product.name}
         </p>
         <p className='product-price'>
-          {props.product.price} руб.
+          {this.props.product.price} руб.
         </p>
-        <button className='buy-product-button' data-id={props.product.id} onClick={() =>  props.addToCart(props.product)}>Купить</button>
+        <button className='buy-product-button' data-id={this.props.product.id} onClick={() => this.clickFunction()}>Купить</button>
       </div>
     )
-
+  }
 }
 
 export default Product;

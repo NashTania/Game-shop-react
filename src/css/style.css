@@ -400,6 +400,34 @@ footer {
   margin: 0.5rem;
 }
 
+.modal {
+  position: fixed;
+  top: 10rem;
+  left: 30%;
+  background-color: #1d1e1f;
+  width: 40%;
+  height: 40%;
+  text-align: center;
+}
+
+.modal-text{
+  font-size: 2rem;
+  margin-top: 4rem;
+  font-family: "Helvetica";
+  margin-bottom: 3rem;
+  color: #ffffff;
+}
+.modal-button{
+  width: 7rem;
+  height: 2rem;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-family: "Helvetica";
+  background-color: #55c0ca;
+  border: 0px;
+  color: #ffffff;
+}
+
 @media (min-width: 399px) {
 
   .flex-menu {
