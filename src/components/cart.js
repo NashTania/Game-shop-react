@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom'
 import '../css/style.css';
 import CartList from './cart-list.js';
-import { store } from '../redux-ex.js';
+import { store } from '../reducers/reducer.js'
 import Modal from './modal.js'
 
 class CartPage extends React.Component {

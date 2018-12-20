@@ -11,7 +11,7 @@ import Contacts from './components/contacts.js';
 import App from './components/app.js';
 import Footer from './components/footer.js';
 import { Provider } from 'react-redux';
-import { store } from './redux-ex.js'
+import { store } from './reducers/reducer.js'
 
 
 

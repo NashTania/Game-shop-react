@@ -2,9 +2,11 @@ import {createStore, applyMiddleware} from 'redux';
 import thunk from 'redux-thunk';
 import addFetch from '../fetch-function.js'
 import {  ADD_PRODUCT_TO_CART, GET_PRODUCTS, DELETE_PRODUCT, INCREASE_QUANTITY, DECREASE_QUANTITY } from '../constants/active-types.js'
-import { store } from '../redux-ex.js';
+import { store } from '../reducers/reducer.js'
 
 export function addToCart(product) {
+  let cart = store.getState();
+  console.log(cart.productsCart)
   return {
     type: ADD_PRODUCT_TO_CART,
     product: product
@@ -20,20 +22,21 @@ export function deleteItem(product) {
 
 export function getProducts() {
   let cart = store.getState();
-
   if (cart.productsCart === null) {
     return (dispatch) => {
       return addFetch().then (
-        data => dispatch({
+        data => {
+          dispatch({
           type: GET_PRODUCTS,
           arr: JSON.parse(data.result)
         })
+        }
       )
     }
   } else {
     return {
       type: GET_PRODUCTS,
-      arr: store.productsCart
+      arr: cart.productsCart
     }
   }
 }

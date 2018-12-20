@@ -1,7 +1,7 @@
 import React  from 'react';
 import '../css/style.css';
 import { Link } from "react-router-dom";
-import { store } from '../redux-ex.js';
+import { store } from '../reducers/reducer.js'
 
 export default class CartQuantity extends React.Component {
   constructor(props) {

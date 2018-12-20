@@ -10,7 +10,6 @@ export default class Modal extends React.Component {
 
   componentDidMount() {
     const modalRoot = document.getElementById('modal-root')
-    console.log(this.el)
     modalRoot.appendChild(this.el);
   }
 

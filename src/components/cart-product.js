@@ -1,6 +1,6 @@
 import React from 'react';
 import '../css/style.css';
-import { store } from '../redux-ex.js';
+import { store } from '../reducers/reducer.js'
 
 class CartProduct extends React.Component {
   constructor(props) {

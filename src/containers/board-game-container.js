@@ -4,7 +4,7 @@ import { addToCart } from '../actions/actions.js';
 import { connect } from 'react-redux';
 import React from 'react';
 import BoardGames from '../components/board-games-shop.js';
-import { store } from '../redux-ex.js';
+import { store } from '../reducers/reducer.js';
 
 const boundAddProduct = (dispatch) => {
   const userId = getUserId()
@@ -13,7 +13,7 @@ const boundAddProduct = (dispatch) => {
       dispatch(addToCart(product))
       let cart = store.getState()
       console.log(cart.productsCart)
-      sendRequest(sendRequest('tatiana_tkachenko_FD2_game_shop_cart_' + userId, cart.productsCart))
+      sendRequest('tatiana_tkachenko_FD2_game_shop_cart_' + userId, cart.productsCart)
     }
   }
 }
@@ -21,18 +21,3 @@ const boundAddProduct = (dispatch) => {
 export default connect(null,
   boundAddProduct
 )(BoardGames)
-
-
-
-/*const body = new URLSearchParams();
-body.set('f','READ');
-body.set('n', 'tatiana_tkachenko_FD2_game_shop_cart_' + userId);
-let cartProducts = fetch("https://fe.it-academy.by/AjaxStringStorage2.php", {
-  method: "POST",
-  body: body
-}).then(res => res.json()).then((data) => {
-  let cartItems = JSON.parse(data.result);
-  cartItems.push(product)
-  sendRequest('tatiana_tkachenko_FD2_game_shop_cart_' + userId, cartItems)
-  console.log('товар добавлен')
-})*/

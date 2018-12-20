@@ -1,7 +1,7 @@
 import {createStore, applyMiddleware} from 'redux';
 import thunk from 'redux-thunk';
-import addFetch from './fetch-function.js'
-import {  ADD_PRODUCT_TO_CART, GET_PRODUCTS, DELETE_PRODUCT, INCREASE_QUANTITY, DECREASE_QUANTITY } from './constants/active-types.js'
+import addFetch from '../fetch-function.js'
+import {  ADD_PRODUCT_TO_CART, GET_PRODUCTS, DELETE_PRODUCT, INCREASE_QUANTITY, DECREASE_QUANTITY } from '../constants/active-types.js'
 
 const initalState = {
   productsCart: null
@@ -15,7 +15,9 @@ export function productsApp(state = initalState, action) {
       }
 
     case ADD_PRODUCT_TO_CART:
-      if (state.productsCart.indexOf(action.product) === -1) {
+      const existigProduct = state.productsCart.find((product) => product.id === action.product.id)
+      console.log(existigProduct)
+      if (existigProduct === undefined) {
         action.product.quantity =  1
         return {
           productsCart: [
@@ -24,7 +26,10 @@ export function productsApp(state = initalState, action) {
           ]
         }
       } else {
-          action.product.quantity = action.product.quantity + 1
+        console.log(existigProduct.quantity)
+          action.product.quantity = existigProduct.quantity + 1
+          debugger
+            console.log(state.productsCart)
           return {
             productsCart: [...state.productsCart]
           }

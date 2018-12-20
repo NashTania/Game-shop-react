@@ -2,7 +2,7 @@
 import { connect } from 'react-redux';
 import CartPage from '../components/cart.js';
 //import { deleteItem } from '../actions/actions.js';
-import { store } from '../redux-ex.js';
+import { store } from '../reducers/reducer.js';
 import sendRequest from '../send-request.js';
 import getUserId from '../make-id.js';
 import { increaseQuantity, getProducts, deleteItem } from '../actions/actions.js';
@@ -24,7 +24,7 @@ import {  decreaseQuantity } from '../actions/actions.js';
       deleteItem: (product) => {
         dispatch(deleteItem(product));
         let cart = store.getState();
-        sendRequest(sendRequest('tatiana_tkachenko_FD2_game_shop_cart_' + userId, cart.productsCart))
+        sendRequest('tatiana_tkachenko_FD2_game_shop_cart_' + userId, cart.productsCart)
       },
       increaseQuantity: (product) => {
         dispatch(increaseQuantity(product));

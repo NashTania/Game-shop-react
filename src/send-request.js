@@ -1,9 +1,8 @@
-import { store } from './redux-ex.js';
+import { store } from './reducers/reducer.js'
 //import addFetch from './fetch-function.js'
 
 function sendRequest(key, value) {
   let cart = store.getState()
-  console.log(cart.productsCart)
     if (cart.productsCart !== null){
       const body = new URLSearchParams();
       body.set('f', 'LOCKGET');
