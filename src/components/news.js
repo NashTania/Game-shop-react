@@ -12,7 +12,7 @@ class NewsPage extends React.Component {
           </p>
         </div>
         <div className='blog'>
-        <NewsBlock />
+          <NewsBlock />
         </div>
       </div>
     )

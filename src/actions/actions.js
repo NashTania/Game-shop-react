@@ -6,12 +6,11 @@ import { store } from '../reducers/reducer.js'
 
 export function addToCart(product) {
   let cart = store.getState();
-  console.log(cart.productsCart)
-  return {
-    type: ADD_PRODUCT_TO_CART,
-    product: product
+    return {
+      type: ADD_PRODUCT_TO_CART,
+      product: product
+    }
   }
-}
 
 export function deleteItem(product) {
   return {
@@ -27,9 +26,9 @@ export function getProducts() {
       return addFetch().then (
         data => {
           dispatch({
-          type: GET_PRODUCTS,
-          arr: JSON.parse(data.result)
-        })
+            type: GET_PRODUCTS,
+            arr: JSON.parse(data.result)
+          })
         }
       )
     }

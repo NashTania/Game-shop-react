@@ -36,8 +36,6 @@ class BoardGames extends React.Component {
   }
 
   filterProduct = (event) => {
-    console.log(event.target.value);
-
     const { isLoaded, items, filtredItems} = this.state;
     const itemsForFilter = items;
     if(event.target.value === 'not-selected'){
@@ -51,7 +49,6 @@ class BoardGames extends React.Component {
       this.setState({
         filtredItems: result
       })
-      console.log(result)
     }
   }
 
@@ -62,11 +59,6 @@ class BoardGames extends React.Component {
   handleHide() {
     this.setState({showModal: false});
   }
-
-  /*addToCart = (event) => {
-    const items = this.state.items;
-    addProductToCart(event, items)
-  };*/
 
   render() {
     const { isLoaded, items, filtredItems } = this.state;

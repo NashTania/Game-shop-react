@@ -1,5 +1,4 @@
 import { store } from './reducers/reducer.js'
-//import addFetch from './fetch-function.js'
 
 function sendRequest(key, value) {
   let cart = store.getState()

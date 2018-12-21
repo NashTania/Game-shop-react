@@ -22,7 +22,6 @@ class CartPage extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.props.cartGame)
     if ( this.props.cartGame === null ) {
       this.props.getProducts().then((data) => {
         this.setState({
@@ -104,8 +103,3 @@ class CartPage extends React.Component {
 }
 
 export default CartPage;
-
-
-
-
-//modal={this.handleShow}

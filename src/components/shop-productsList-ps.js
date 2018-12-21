@@ -6,13 +6,12 @@ function ProductsListPs(props) {
   const listProducts = props.products.map(product =>
     <Product key={product.id} product={product} addToCart={props.addToCart} modal={props.modal}/>
   )
-
   return (
     <div id='product-list'>
-    <div className='shop-flex-row'>
-      {listProducts}
+      <div className='shop-flex-row'>
+        {listProducts}
+      </div>
     </div>
-  </div>
   )
 }
 

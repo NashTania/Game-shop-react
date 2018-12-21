@@ -12,7 +12,6 @@ const boundAddProduct = (dispatch) => {
     addToCart: (product) => {
       dispatch(addToCart(product))
       let cart = store.getState()
-      console.log(cart.productsCart)
       sendRequest('tatiana_tkachenko_FD2_game_shop_cart_' + userId, cart.productsCart)
     }
   }

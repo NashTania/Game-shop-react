@@ -1,6 +1,5 @@
 import React  from 'react';
 import '../css/style.css';
-//import productsBoard from '../product-board-game.js';
 import Product from './shop-product.js';
 
 function BoardList(props) {

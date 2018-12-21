@@ -41,12 +41,11 @@ class ShopPage extends React.Component {
       this.state.filterId.push(event.currentTarget.id);
       this.filterRender()
     }
-    if(event.currentTarget.checked === false) {
+    if (event.currentTarget.checked === false) {
       const filterId = this.state.filterId.filter(item =>
         item !== event.currentTarget.id
       )
       this.state.filterId = filterId;
-      console.log()
       this.filterRender()
     }
   }
@@ -73,11 +72,6 @@ class ShopPage extends React.Component {
   handleHide() {
     this.setState({showModal: false});
   }
-
-  /*addToCart = (event) => {
-    const items = this.state.items;
-    addProductToCart(event, items)
-  };*/
 
   render() {
     const { isLoaded, items, filtredItems } = this.state;

@@ -16,8 +16,7 @@ class Contacts extends React.Component {
           </p>
           <p className="contacts-text">
             Минск, <br /> ул. Острожских, дом 12.
-
-        </p>
+          </p>
         </div>
 
         <div className="contacts-paragraph">
@@ -35,16 +34,13 @@ class Contacts extends React.Component {
           </p>
           <p className="contacts-text">
             <b>e-mail: </b><br /> supertort.by@gmail.com
-
-        </p>
+          </p>
           <p className="contacts-text">
             <b>Телефон: </b><br /> +375 (44) 577-71-77
-
-        </p>
+          </p>
           <p className="contacts-text">
             <b>Мобильный: </b><br /> +375 (29) 538-77-76
-
-        </p>
+          </p>
         </div>
       </div>
     )

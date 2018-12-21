@@ -17,4 +17,3 @@ function CartList(props) {
   )
 }
 export default CartList;
-//modal={props.handleShow} modalWindow={props.modal}

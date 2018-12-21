@@ -1,7 +1,5 @@
-//deleteItemimport { getProducts } from '../actions/actions.js';
 import { connect } from 'react-redux';
 import CartPage from '../components/cart.js';
-//import { deleteItem } from '../actions/actions.js';
 import { store } from '../reducers/reducer.js';
 import sendRequest from '../send-request.js';
 import getUserId from '../make-id.js';
@@ -29,13 +27,11 @@ import {  decreaseQuantity } from '../actions/actions.js';
       increaseQuantity: (product) => {
         dispatch(increaseQuantity(product));
         let cart = store.getState();
-        console.log(cart.productsCart)
       },
       decreaseQuantity: (product) => {
         dispatch(decreaseQuantity(product))
         let cart = store.getState();
-        console.log(cart.productsCart)
-        if(product.quantity === 0) {
+        if (product.quantity === 0) {
           dispatch(deleteItem(product))
         }
       }

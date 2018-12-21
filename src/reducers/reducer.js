@@ -16,7 +16,6 @@ export function productsApp(state = initalState, action) {
 
     case ADD_PRODUCT_TO_CART:
       const existigProduct = state.productsCart.find((product) => product.id === action.product.id)
-      console.log(existigProduct)
       if (existigProduct === undefined) {
         action.product.quantity =  1
         return {
@@ -26,10 +25,7 @@ export function productsApp(state = initalState, action) {
           ]
         }
       } else {
-        console.log(existigProduct.quantity)
           action.product.quantity = existigProduct.quantity + 1
-          debugger
-            console.log(state.productsCart)
           return {
             productsCart: [...state.productsCart]
           }
